@@ -1,1 +1,2 @@
-console.log('hello webpack4.x')
+import css from "./index.css";
+console.log('aaa')

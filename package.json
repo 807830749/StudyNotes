@@ -1,16 +1,27 @@
 {
-  "name": "project01",
+  "name": "StudyNotes",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/807830749/StudyNotes.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/807830749/StudyNotes/issues"
+  },
+  "homepage": "https://github.com/807830749/StudyNotes#readme",
   "devDependencies": {
+    "css-loader": "^5.1.1",
+    "style-loader": "^2.0.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
-  }
+  },
+  "dependencies": {}
 }
