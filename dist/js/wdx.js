@@ -154,7 +154,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_index_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/index.css */ \"./src/css/index.css\");\n/* harmony import */ var _css_index_less__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/index.less */ \"./src/css/index.less\");\n\r\n\r\nconsole.log('aaa')\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_index_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/index.css */ \"./src/css/index.css\");\n/* harmony import */ var _css_index_less__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/index.less */ \"./src/css/index.less\");\n\r\n\r\n// import img from \"./img/windows.png\"\r\n// const imge = new Image()\r\n// imge.src = img\r\n// const app = document.getElementById('app')\r\n// app.append(imge)\r\nconsole.log('aaa')\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 

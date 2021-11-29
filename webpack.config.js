@@ -13,11 +13,15 @@ module.exports = {
 		wdx: './src/index.js'
 	},
 	output: {
-		filename: '[name].js', // 输出的文件叫什么名字 [name]是占位符，name等于entry里的key值
+		// filename: 'js/[name].js', // 需要目录划分
+		filename: 'js/[name].js', // 输出的文件叫什么名字 [name]是占位符，name等于entry里的key值
 		path: path.resolve(__dirname, './dist'), // 输出的资源存放位置，是绝对路径
 		//publicPath: "http://www.baidu.com" 
 	},
 	mode: 'development', // 打包模式：production, development, none
+	resolveLoader: { // loader的解析地址，默认是去node_modules模块里面找
+		modules: ['./node_modules', './myLoaders']
+	},
 	// loader webpack默认只支持js json模块，loader是让webpack识别并处理除js json外的文件，是模块解析器
 	// css-loader：让webpack支持css语句，并序列化
 	// style-loader：生成<style></style>标签，并把序列化的css文件挂载到页面头部
@@ -32,10 +36,55 @@ module.exports = {
 			// {
 			// 	test: /\.less$/,
 			// 	use: ["style-loader", "css-loader", "postcss-loader", "less-loader"]
-			// }
+			// },
 			{
 				test: /\.less$/,
-				use: [MiNiCssExtractPlugin.loader, "css-loader", "postcss-loader", "less-loader"]
+				use: [
+					MiNiCssExtractPlugin.loader,
+					"css-loader",
+					// {
+					// 	loader: "css-loader",
+					// 	options: {}
+					// },
+					"postcss-loader",
+					"less-loader"
+				]
+			},
+			// {
+			// 	test: /\.less$/,
+			// 	use: [
+			// 		"wdx-style-loader",
+			// 		"wdx-css-loader",
+			// 		// "postcss-loader",
+			// 		"wdx-less-loader"
+			// 	]
+			// },
+			// {
+			// 	test: /\.js$/,
+			// 	use: [// 多个loader使用注意顺序：自下而上，自右向左
+			// 		// path.resolve(__dirname, "./myLoaders/replace-loader-2"),
+			// 		"replace-loader-2",
+			// 		{
+			// 			// loader: path.resolve(__dirname, "./myLoaders/replace-loader"),
+			// 			loader: "replace-loader",
+			// 			options: {
+			// 				name: 'wdx'
+			// 			}
+			// 		}
+			// 	]
+			// },
+			{
+				test: /\.(png|jpe?g|gif|webp)$/,
+				use: {
+					loader: "file-loader",
+					options: {
+						// name: 图片的名称
+						// ext: 图片的后缀格式
+						name: "[name].[ext]",
+						outputPath: "images", // 图片的存放路径
+						publicPath: "../images/" // 图片的引用路径，即css中使用的图片的路径
+					}
+				}
 			}
 		]
 	},
@@ -46,7 +95,8 @@ module.exports = {
 			chunks: ["wdx"] // 需要关联的文件，值是entry的key
 		}),
 		new MiNiCssExtractPlugin({ // 把css抽离成独立的文件
-			filename: "[name].css", // 生成的文件名称
+			//filename: "css/[name].css", // 需要进行目录划分
+			filename: "css/[name].css", // 生成的文件名称
 		})
 	]
 }
