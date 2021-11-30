@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack"
+    "dev": "webpack",
+    "mpa": "webpack --config ./mpa.config.js",
+    "server": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -19,9 +21,12 @@
   "homepage": "https://github.com/807830749/StudyNotes#readme",
   "devDependencies": {
     "autoprefixer": "^10.4.0",
+    "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^5.1.1",
     "cssnano": "^5.0.11",
+    "express": "^4.17.1",
     "file-loader": "^6.2.0",
+    "glob": "^7.2.0",
     "html-webpack-plugin": "^4.5.1",
     "less": "^4.1.2",
     "less-loader": "^7.3.0",
@@ -31,7 +36,8 @@
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {}
 }
