@@ -3,6 +3,7 @@ const path = require('path') // node 核心模块
 const htmlwebpackplugin = require('html-webpack-plugin') // 自动生成html插件 关联资源文件
 const MiNiCssExtractPlugin = require('mini-css-extract-plugin') // 把css抽离成独立的文件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 每次打包前先清理dist目录
+const TxtWebpackPlugin = require("./myPlugins/txt-webpack-plugin")
 
 // chunk: 代码片段，一个模块就生成一个chunk
 // bundle: dist里打包好的资源文件，由一个或多个chunk组成
@@ -105,6 +106,32 @@ module.exports = {
 			{
 				test: /\.(woff|woff2|ttf)$/,
 				use: "file-loader"
+			},
+			{
+				test: /\.js$/,
+				use: "babel-loader"
+				// use: {
+				// 	loader: "babel-loader",
+				// 	options: {// 可以把babel配置项单独提出来放到.babelrc文件里，或者babel.config.json文件里，都要用json的格式书写
+				// 		presets: [
+				// 			[
+				// 				"@babel/preset-env",
+				// 				// 因为polyfill体积比较大，所以需要对@babel/preset-env进行配置，让polyfill做到按需加载
+				// 				{
+				// 					targets: { // 对目标浏览器进行配置
+				// 						chrome: '77',
+				// 						edge: '16'
+				// 					},
+				// 					corejs: 2, // polyfill核心版本库
+				// 					useBuiltIns: 'usage' // 可选值：entry usage false
+				// 					// entry: 需要在入口文件里import "@bable/polyfill" 一次。babel就会根据你的使用情况，导入相应的垫片。没有使用到的特性，就会被排除掉。
+				// 					// usage: 不需要import,全自动检测，
+				// 					// false: 不会排除掉未使用到的垫片。会导致体积庞大，默认值
+				// 				}
+				// 			]
+				// 		]
+				// 	}
+				// }
 			}
 		]
 	},
@@ -120,7 +147,12 @@ module.exports = {
 	devServer: {
 		contentBase: "./dist", // 指向输出目录,默认是dist(output配置的输出目录)
 		open: true, // 自动打开浏览器窗口
-		port: 8081
+		port: 8081,
+		proxy: {
+			"/api": {
+				target: "http://localhost:9092"
+			}
+		}
 	},
 	plugins: [
 		new htmlwebpackplugin({
@@ -138,6 +170,7 @@ module.exports = {
 			// * 表示所有的目录和文件
 			// */ 表示所有的目录
 			//cleanOnceBeforeBuildPatterns: ["*", "!css"] // 保留css目录不清理
-		})
+		}),
+		new TxtWebpackPlugin({name: "王冬雪"})
 	]
 }

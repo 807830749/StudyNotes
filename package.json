@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/807830749/StudyNotes#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
     "autoprefixer": "^10.4.0",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^5.1.1",
@@ -39,5 +41,14 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "-": "0.0.1",
+    "@babel/core": "^7.16.0",
+    "@babel/polyfill": "^7.12.1",
+    "D": "^1.0.0",
+    "axios": "^0.24.0",
+    "babel-loader": "^8.2.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
 }
