@@ -4,6 +4,7 @@ const htmlwebpackplugin = require('html-webpack-plugin') // 自动生成html插�
 const MiNiCssExtractPlugin = require('mini-css-extract-plugin') // 把css抽离成独立的文件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 每次打包前先清理dist目录
 const TxtWebpackPlugin = require("./myPlugins/txt-webpack-plugin")
+const ListWbpackPlugin = require("./myPlugins/list-webpack-plugin")
 
 // chunk: 代码片段，一个模块就生成一个chunk
 // bundle: dist里打包好的资源文件，由一个或多个chunk组成
@@ -171,6 +172,7 @@ module.exports = {
 			// */ 表示所有的目录
 			//cleanOnceBeforeBuildPatterns: ["*", "!css"] // 保留css目录不清理
 		}),
-		new TxtWebpackPlugin({name: "王冬雪"})
+		new TxtWebpackPlugin({name: "王冬雪"}),
+		new ListWbpackPlugin({name: "wdxList"})
 	]
 }
