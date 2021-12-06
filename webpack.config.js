@@ -3,6 +3,7 @@ const path = require('path') // node 核心模块
 const htmlwebpackplugin = require('html-webpack-plugin') // 自动生成html插件 关联资源文件
 const MiNiCssExtractPlugin = require('mini-css-extract-plugin') // 把css抽离成独立的文件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 每次打包前先清理dist目录
+const webpack = require("webpack") // 热模块是webpack的一个插件，所以使用热模块更新需要引入webpack
 const TxtWebpackPlugin = require("./myPlugins/txt-webpack-plugin")
 const ListWbpackPlugin = require("./myPlugins/list-webpack-plugin")
 
@@ -149,6 +150,8 @@ module.exports = {
 		contentBase: "./dist", // 指向输出目录,默认是dist(output配置的输出目录)
 		open: true, // 自动打开浏览器窗口
 		port: 8081,
+		hot: true, // 开启hmr，热模块替换，还需要配合使用webpack的热模块插件(实际不用webpack的热模块插件也可以实现热模块更新)
+		// hotOnly: true, // 关闭浏览器的刷新
 		proxy: {
 			"/api": {
 				target: "http://localhost:9092"
@@ -172,6 +175,7 @@ module.exports = {
 			// */ 表示所有的目录
 			//cleanOnceBeforeBuildPatterns: ["*", "!css"] // 保留css目录不清理
 		}),
+		// new webpack.HotModuleReplacementPlugin(),
 		new TxtWebpackPlugin({name: "王冬雪"}),
 		new ListWbpackPlugin({name: "wdxList"})
 	]

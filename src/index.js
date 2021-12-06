@@ -1,3 +1,13 @@
+import counter from "./counter.js"
+import number from "./number.js"
+
+
+
+
+
+
+
+import hmr from "./css/hmr.css"
 // import css from "./css/index.css";
 // import less from "./css/index.less";
 // import imgless from "./css/css2/img.less";
@@ -36,3 +46,15 @@
 //     })
 // })
 // compilers.run()
+
+var btn = document.createElement("button")
+btn.innerHTML = "新增"
+document.body.appendChild(btn)
+btn.onclick = function() {
+    var div = document.createElement("div")
+    div.innerHTML = "item"
+    document.body.appendChild(div)
+}
+
+counter()
+number()
