@@ -4,6 +4,8 @@ const htmlwebpackplugin = require('html-webpack-plugin') // 自动生成html插�
 const MiNiCssExtractPlugin = require('mini-css-extract-plugin') // 把css抽离成独立的文件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 每次打包前先清理dist目录
 const webpack = require("webpack") // 热模块是webpack的一个插件，所以使用热模块更新需要引入webpack
+const purifycss = require("purifycss-webpack") // css摇树
+const glob = require("glob-all")
 const TxtWebpackPlugin = require("./myPlugins/txt-webpack-plugin")
 const ListWbpackPlugin = require("./myPlugins/list-webpack-plugin")
 
@@ -158,6 +160,9 @@ module.exports = {
 			}
 		}
 	},
+	optimization: {
+		usedExports: true // 开启js摇树, 但是是开发环境下不生效
+	},
 	plugins: [
 		new htmlwebpackplugin({
 			template: "./src/index.html", // 生成html时的参考模板
@@ -176,6 +181,13 @@ module.exports = {
 			//cleanOnceBeforeBuildPatterns: ["*", "!css"] // 保留css目录不清理
 		}),
 		// new webpack.HotModuleReplacementPlugin(),
+		new purifycss({
+			// paths: [] // 对需要进行摇树的模块进行配置
+			paths: glob.sync([
+				path.resolve(__dirname, "./src/*.html"),
+				path.resolve(__dirname, "./src/*.js")
+			])
+		}),
 		new TxtWebpackPlugin({name: "王冬雪"}),
 		new ListWbpackPlugin({name: "wdxList"})
 	]

@@ -1,15 +1,10 @@
 import counter from "./counter.js"
 import number from "./number.js"
-
-
-
-
-
-
-
 import hmr from "./css/hmr.css"
 // import css from "./css/index.css";
-// import less from "./css/index.less";
+import less from "./css/index.less";
+import { add } from "./expo.js"
+console.log(add(10, 30))
 // import imgless from "./css/css2/img.less";
 // import img from "./img/windows.png"
 // import axios from "axios"
@@ -58,3 +53,16 @@ btn.onclick = function() {
 
 counter()
 number()
+// setTimeout(() => {
+//     var span = document.createElement("span")
+//     span.innerHTML = "span"
+//     document.body.appendChild(span)
+// }, 1000)
+// var btn = document.createElement("button")
+// btn.innerHTML = "新增span"
+// document.body.appendChild(btn)
+// btn.onclick = function() {
+//     var div = document.createElement("span")
+//     div.innerHTML = "span"
+//     document.body.appendChild(div)
+// }

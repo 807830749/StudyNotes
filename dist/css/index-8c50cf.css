@@ -1,0 +1,13 @@
+body .less {
+  background: green url(../images/windows.png) 50% no-repeat;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 200px;
+}
+
+span {
+  background-color: red;
+  height: 40px;
+}

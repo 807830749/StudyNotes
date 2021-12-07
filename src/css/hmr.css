@@ -4,3 +4,7 @@ div {
 div:nth-of-type(odd) {
     background: pink;
 }
+span {
+    height: 40px;
+    background-color: yellow;
+}
